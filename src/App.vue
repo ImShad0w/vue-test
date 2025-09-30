@@ -1,11 +1,31 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
 
+const hideText = ref(false);
+
+import counterWithMsg from './counterWithMsg.vue';
+import hideTextVue from './hideText.vue';
+import showTextBelow from "./showTextBelow.vue";
+import listRendering from './listRendering.vue';
+
+</script>
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <h1>Excercises with Vue.js</h1>
+  <h2>Counter with a special message!</h2>
+  <counterWithMsg />
+  <h2 :class="hideText ? 'hidden' : 'red'">Button that hides and unhides some text</h2>
+  <hideTextVue @response="(msg) => hideText = msg" />
+  <h2>Input that underneath shows current text</h2>
+  <showTextBelow />
+  <h2>List with delete buttons</h2>
+  <listRendering />
 </template>
+<style>
+.hidden {
+  display: none;
+}
 
-<style scoped></style>
+.red {
+  color: red;
+}
+</style>
